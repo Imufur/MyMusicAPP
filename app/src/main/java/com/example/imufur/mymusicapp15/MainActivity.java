@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<String> albums;
-    private RatingBar ratingBar;
+    private RatingBar ratingBar2;
 
 
 
