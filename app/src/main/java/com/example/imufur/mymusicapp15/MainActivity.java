@@ -1,6 +1,7 @@
 package com.example.imufur.mymusicapp15;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<String> albums;
@@ -30,9 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        albums = new ArrayList<String>();
-        albums.add("Linkin Park | Meteora | 2003 | eded | 4*");
-        albums.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
+      //  albums = new ArrayList<String>();
+      //  albums.add("Linkin Park | Meteora | 2003 | eded | 4*");
+      //  albums.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
+
+        SharedPreferences sp =getSharedPreferences("albumsApp", 0);
+        Set<String> albumsset = sp.getStringSet("albumsskey", new HashSet<String>());
+
+        albums = new ArrayList<String>(albumsset);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, albums);
         ListView listView = (ListView) findViewById(R.id.listView_albums);
@@ -50,6 +59,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences sp = getSharedPreferences("albumsApp", 0);
+        SharedPreferences.Editor editor = sp.edit();
+        HashSet albumsset = new HashSet(albums);
+
+        editor.putStringSet("albumskey", albumsset);
+        editor.commit();
+
+        Toast.makeText(MainActivity.this, "A guardar dados", Toast.LENGTH_SHORT).show();
+
+    }
+
+
 
     public void onClick_search(View view) {
         // ir buscar referência para a edittext, spinner e listviewb
