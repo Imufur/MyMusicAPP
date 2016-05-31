@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                adb.show();
            }
        });*/
-
+//fews
                 ListView listView = (ListView) findViewById(R.id.listView_albums);
 
                 String item = (String) listView.getItemAtPosition(position);
