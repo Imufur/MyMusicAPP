@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
       //  albums.add("Linkin Park | Meteora | 2003 | eded | 4*");
       //  albums.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
 
-        SharedPreferences sp =getSharedPreferences("albumsApp", 0);
+        SharedPreferences sp =getSharedPreferences("albumsssssApp", 0);
         Set<String> albumsset = sp.getStringSet("albumsskey", new HashSet<String>());
 
         albums = new ArrayList<String>(albumsset);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        SharedPreferences sp = getSharedPreferences("albumsApp", 0);
+        SharedPreferences sp = getSharedPreferences("albumsssssApp", 0);
         SharedPreferences.Editor editor = sp.edit();
         HashSet albumsset = new HashSet(albums);
 
