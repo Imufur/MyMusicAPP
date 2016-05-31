@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MyMusicAPP 1.5</string>
+
+        <string-array name="albums_array">
+            <item name="All">All</item>
+            <item name="arts">Artist</item>
+            <item name="alb">Album</item>
+            <item name="ano">Year</item>
+            <item name="rating">Rating</item>
+            <item name="Albart">Album e Artista</item>
+        </string-array>
+    <string name="All">All</string>
+    <string name="alb">Album</string>
+    <string name="ano">Year</string>
+    <string name="arts">Artist</string>
+    <string name="button_search">Search</string>
+    <string name="button_add">Add</string>
+    <string name="saa">Showing all Albums</string>
+    <string name="sa">Showing Albums</string>
+    <string name="ma">Results not found, showing all albums</string>
+    <string name="naa">New album added</string>
+    <string name="new_album_dw">New album</string>
+    <string name="info_dw">Write the name of the artist, album and year</string>
+    <string name="rating">Rating</string>
+    <string name="Albart">Album e Artista</string>
+
+
+
+
+</resources>

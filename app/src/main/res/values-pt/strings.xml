@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="albums_array">
+        <item name="All">Tudo</item>
+        <item name="arts">Artista</item>
+        <item name="alb">Album</item>
+        <item name="ano">Ano</item>
+        <item name="rating">Classificaçao</item>
+        <item name="Albart">Album e Artista</item>
+    </string-array>
+    <string name="button_search">Procurar</string>
+    <string name="button_add">Adicionar</string>
+    <string name="saa">A mostrar todos os albums</string>
+    <string name="sac">A mostrar albums</string>
+    <string name="ma">Resultados não encontrados, a mostrar todos</string>
+    <string name="naa">Novo album adicionado</string>
+    <string name="new_album_dw">Novo album</string>
+    <string name="info_dw">Escreve o nome do artista, album e ano</string>
+    <string name="rating">Classificaçao</string>
+
+
+
+</resources>
