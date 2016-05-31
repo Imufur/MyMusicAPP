@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<String> albums;
+    private ArrayList<String> albums2;
     private RatingBar ratingBar;
 
 
@@ -33,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-      //  albums = new ArrayList<String>();
-      //  albums.add("Linkin Park | Meteora | 2003 | eded | 4*");
-      //  albums.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
+      //  albums2 = new ArrayList<String>();
+      //  albums2.add("Linkin Park | Meteora | 2003 | eded | 4*");
+      //  albums2.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
 
         SharedPreferences sp =getSharedPreferences("albumsssssApp", 0);
         Set<String> albumsset = sp.getStringSet("albumsskey", new HashSet<String>());
 
-        albums = new ArrayList<String>(albumsset);
+        albums2 = new ArrayList<String>(albumsset);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, albums);
+                android.R.layout.simple_list_item_1, albums2);
         ListView listView = (ListView) findViewById(R.id.listView_albums);
         listView.setAdapter(adapter);
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("albumsssssApp", 0);
         SharedPreferences.Editor editor = sp.edit();
-        HashSet albumsset = new HashSet(albums);
+        HashSet albumsset = new HashSet(albums2);
 
         editor.putStringSet("albumskey", albumsset);
         editor.commit();
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         if (termo.equals("")) { // se o termo a pesquisar for uma string vazia
             // mostra os albuns todos
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    this, android.R.layout.simple_list_item_1, albums);
+                    this, android.R.layout.simple_list_item_1, albums2);
             lv.setAdapter(adapter);
 
             Toast.makeText(MainActivity.this, this.getString(R.string.saa), Toast.LENGTH_SHORT).show();
@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<String> resultados = new ArrayList<>();
 
             if (itemSeleccionado.equals(this.getString(R.string.All))) {
-                for (int i = 0; i < albums.size(); i++) {
-                    String c = albums.get(i);
+                for (int i = 0; i < albums2.size(); i++) {
+                    String c = albums2.get(i);
 
                     boolean contem = c.contains(termo);
 
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else if (itemSeleccionado.equals(this.getString(R.string.arts))) {
                 // código pesquisar só no nome
-                for (int i = 0; i < albums.size(); i++) {
-                    String c = albums.get(i);
+                for (int i = 0; i < albums2.size(); i++) {
+                    String c = albums2.get(i);
 
                     String[] s = c.split("\\|");
                     String name = s[0];
@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else if (itemSeleccionado.equals(this.getString(R.string.alb)) ){
                 // códido pesquisar só no album
-                for (int i = 0; i < albums.size(); i++) {
-                    String c = albums.get(i);
+                for (int i = 0; i < albums2.size(); i++) {
+                    String c = albums2.get(i);
 
                     String[] s = c.split("\\|");
                     String number = s[1];
@@ -142,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
 
             else if (itemSeleccionado.equals(this.getString(R.string.ano)) ){
 
-                for (int i = 0; i < albums.size(); i++) {
-                    String c = albums.get(i);
+                for (int i = 0; i < albums2.size(); i++) {
+                    String c = albums2.get(i);
 
                     String[] s = c.split("\\|");
                     String number = s[2];
@@ -159,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
 
             else if (itemSeleccionado.equals(this.getString(R.string.editor)) ){
 
-                for (int i = 0; i < albums.size(); i++) {
-                    String c = albums.get(i);
+                for (int i = 0; i < albums2.size(); i++) {
+                    String c = albums2.get(i);
 
                     String[] s = c.split("\\|");
                     String number = s[3];
@@ -177,8 +177,8 @@ public class MainActivity extends AppCompatActivity {
 
             else if (itemSeleccionado.equals(this.getString(R.string.rating)) ){
                  //se rating tiver selecionado no spinner
-                for (int i = 0; i < albums.size(); i++) {
-                    String c = albums.get(i);
+                for (int i = 0; i < albums2.size(); i++) {
+                    String c = albums2.get(i);
 
                     String[] s = c.split("\\|");
                     String number = s[4];
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             } else { // se a lista está vazia
                 // mostra os contactos todos
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                        this, android.R.layout.simple_list_item_1, albums);
+                        this, android.R.layout.simple_list_item_1, albums2);
                 lv.setAdapter(adapter);
 
                 Toast.makeText(MainActivity.this, this.getString(R.string.ma), Toast.LENGTH_SHORT).show(); //toast vai buscar a string ma e a traducao
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //pesquisar o termo nos albums e guardar o resultado da pesuqisa numa lista nova
+    //pesquisar o termo nos albums2 e guardar o resultado da pesuqisa numa lista nova
 
 
 
@@ -254,16 +254,16 @@ public class MainActivity extends AppCompatActivity {
 
                 String albun = artist + " | " + album + " |" + editora + " |" + ano + " | " + rating + "*";
 
-                //adicionar o album a lista de albums
+                //adicionar o album a lista de albums2
 
-                albums.add(albun);
+                albums2.add(albun);
 
-                //mostrar a lista de albums atualizada
+                //mostrar a lista de albums2 atualizada
 
 
                 ListView listView = (ListView) findViewById(R.id.listView_albums);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                        android.R.layout.simple_list_item_1, albums);
+                        android.R.layout.simple_list_item_1, albums2);
                 listView.setAdapter(adapter);
 
                 Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.naa), Toast.LENGTH_SHORT).show();
