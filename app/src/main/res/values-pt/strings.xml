@@ -6,7 +6,8 @@
         <item name="alb">Album</item>
         <item name="ano">Ano</item>
         <item name="rating">Classificaçao</item>
-        <item name="Albart">Album e Artista</item>
+        <item name="editor">editora</item>
+
     </string-array>
     <string name="button_search">Procurar</string>
     <string name="button_add">Adicionar</string>

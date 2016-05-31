@@ -26,6 +26,12 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/editor"
+        android:hint="Editor" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/rating"
         android:hint="Rating"
         android:inputType="number|numberDecimal" />

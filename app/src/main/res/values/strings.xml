@@ -7,9 +7,11 @@
             <item name="alb">Album</item>
             <item name="ano">Year</item>
             <item name="rating">Rating</item>
-            <item name="Albart">Album e Artista</item>
+            <item name="editor">editor</item>
+
         </string-array>
     <string name="All">All</string>
+    <string name="editor">editor</string>
     <string name="alb">Album</string>
     <string name="ano">Year</string>
     <string name="arts">Artist</string>
@@ -22,7 +24,7 @@
     <string name="new_album_dw">New album</string>
     <string name="info_dw">Write the name of the artist, album and year</string>
     <string name="rating">Rating</string>
-    <string name="Albart">Album e Artista</string>
+
 
 
 

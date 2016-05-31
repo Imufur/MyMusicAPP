@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<String> albums;
-    private RatingBar ratingBar2;
+    private RatingBar ratingBar;
 
 
 
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         albums = new ArrayList<String>();
-        albums.add("Linkin Park | Meteora | 2003 | 4*");
-        albums.add("Rammstein | Reise, Reise | 2004 | 5*");
+        albums.add("Linkin Park | Meteora | 2003 | eded | 4*");
+        albums.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, albums);
         ListView listView = (ListView) findViewById(R.id.listView_albums);
@@ -132,6 +132,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+            else if (itemSeleccionado.equals(this.getString(R.string.editor)) ){
+
+                for (int i = 0; i < albums.size(); i++) {
+                    String c = albums.get(i);
+
+                    String[] s = c.split("\\|");
+                    String number = s[3];
+
+                    boolean contem = number.contains(termo);
+
+                    if (contem) {
+                        resultados.add(c);
+                    }
+
+                }
+            }
+
 
             else if (itemSeleccionado.equals(this.getString(R.string.rating)) ){
                  //se rating tiver selecionado no spinner
@@ -139,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     String c = albums.get(i);
 
                     String[] s = c.split("\\|");
-                    String number = s[3];
+                    String number = s[4];
 
                     boolean contem = number.contains(termo);
 
@@ -197,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText etalbum = (EditText) al.findViewById(R.id.album);
                 EditText etano = (EditText) al.findViewById(R.id.ano);
                 EditText etrating = (EditText) al.findViewById(R.id.rating);
+                EditText eteditor = (EditText) al.findViewById(R.id.editor);
 
 
                 //ir buscar as strings das edit texts
@@ -205,10 +223,11 @@ public class MainActivity extends AppCompatActivity {
                 String album = etalbum.getText().toString();
                 String ano = etano.getText().toString();
                 String rating = etrating.getText().toString();
+                String editora = eteditor.getText().toString();
 
                 //criar um novo album
 
-                String albun = artist + " | " + album + " | " + ano + " | " + rating + "*";
+                String albun = artist + " | " + album + " |" + editora + " |" + ano + " | " + rating + "*";
 
                 //adicionar o album a lista de albums
 
