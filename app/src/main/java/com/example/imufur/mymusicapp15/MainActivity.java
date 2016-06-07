@@ -12,13 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,12 +42,11 @@ public class MainActivity extends AppCompatActivity {
       //  albums2.add("Rammstein | Reise, Reise | 2004 | edede | 5*");
 
         SharedPreferences sp =getSharedPreferences("albumsApp", 0);
-        Set<String> albumsset = sp.getStringSet("albumsskey", new HashSet<String>());
+        Set<String> albumsset = sp.getStringSet("albumskey", new HashSet<String>());
 
         albums = new ArrayList<String>(albumsset);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, albums);
+        SimpleAdapter adapter = createSimpleAdapter(albums); //cria adapter dos icons, mudar em todos os adapters
         ListView listView = (ListView) findViewById(R.id.listView_albums);
         listView.setAdapter(adapter);
 
@@ -82,13 +84,12 @@ public class MainActivity extends AppCompatActivity {
 //fews
                 ListView listView = (ListView) findViewById(R.id.listView_albums);
 
-                String item = (String) listView.getItemAtPosition(position);
+                HashMap item = (HashMap) listView.getItemAtPosition(position);
 
 
                 albums.remove(position);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,//mostrar lista atualizada
-                        android.R.layout.simple_list_item_1, albums);
+                SimpleAdapter adapter = createSimpleAdapter(albums);
 
                 listView.setAdapter(adapter);
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        SharedPreferences sp = getSharedPreferences("albumsssssApp", 0);
+        SharedPreferences sp = getSharedPreferences("albumsApp", 0);
         SharedPreferences.Editor editor = sp.edit();
         HashSet albumsset = new HashSet(albums);
 
@@ -130,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (termo.equals("")) { // se o termo a pesquisar for uma string vazia
             // mostra os albuns todos
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    this, android.R.layout.simple_list_item_1, albums);
+            SimpleAdapter adapter = createSimpleAdapter(albums);
             lv.setAdapter(adapter);
 
             Toast.makeText(MainActivity.this, this.getString(R.string.saa), Toast.LENGTH_SHORT).show();
@@ -238,16 +238,14 @@ public class MainActivity extends AppCompatActivity {
 
             if (vazia == false) {
                 // mostrar na listview a lista nova que contém o resultado da pesquisa
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                        this, android.R.layout.simple_list_item_1, resultados);
+                SimpleAdapter adapter = createSimpleAdapter(albums);
                 lv.setAdapter(adapter);
 
                 // mostrar uma mensagem a dizer que a pesquisa teve sucesso
                 Toast.makeText(MainActivity.this, this.getString(R.string.sa), Toast.LENGTH_SHORT).show();
             } else { // se a lista está vazia
                 // mostra os contactos todos
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                        this, android.R.layout.simple_list_item_1, albums);
+                SimpleAdapter adapter = createSimpleAdapter(albums);
                 lv.setAdapter(adapter);
 
                 Toast.makeText(MainActivity.this, this.getString(R.string.ma), Toast.LENGTH_SHORT).show(); //toast vai buscar a string ma e a traducao
@@ -295,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //criar um novo album
 
-                String albun = artist + " | " + album + " |" + editora + " |" + ano + " | " + rating + "*";
+                String albun = artist + " | " + album + " |" + editora + " |" + ano + " | " + rating;
 
                 //adicionar o album a lista de albums2
 
@@ -305,8 +303,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 ListView listView = (ListView) findViewById(R.id.listView_albums);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                        android.R.layout.simple_list_item_1, albums);
+                SimpleAdapter adapter = createSimpleAdapter(albums);
                 listView.setAdapter(adapter);
 
                 Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.naa), Toast.LENGTH_SHORT).show();
@@ -325,6 +322,30 @@ public class MainActivity extends AppCompatActivity {
 // Create the AlertDialog
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+
+    private SimpleAdapter createSimpleAdapter(ArrayList<String> albums) {
+        List<HashMap<String, String>> simpleAdapterData = new ArrayList<HashMap<String, String>>();
+
+        for (String c : albums) {
+            HashMap<String, String> hashMap = new HashMap<>();
+
+            String[] split = c.split("\\|");
+
+            hashMap.put("Artista", split[0].trim());
+            hashMap.put("Album", split[1].trim());
+            hashMap.put("Ano", split[2].trim());
+            hashMap.put("Editora", split[3].trim());
+            hashMap.put("Rating", split[4].trim());
+
+            simpleAdapterData.add(hashMap);
+        }
+
+        String[] from = {"Artista", "Album", "Ano", "Editora", "Rating"};  //phone vai para textview_phone e name vai para textview_name
+        int[] to = {R.id.textView_artista, R.id.textView_album, R.id.textView_ano, R.id.textView_editora, R.id.textView_rating };
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), simpleAdapterData, R.layout.listview_item, from, to);
+        return simpleAdapter;
     }
 
 }

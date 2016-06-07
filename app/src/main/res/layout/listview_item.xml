@@ -11,13 +11,17 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView" />
+            android:id="@+id/imageView"
+            android:src="@mipmap/ic_artista" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textView" />
+            android:id="@+id/textView_artista"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textColor="#fa4343" />
     </LinearLayout>
 
     <LinearLayout
@@ -28,13 +32,18 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2" />
+            android:id="@+id/imageView2"
+            android:src="@mipmap/ic_album" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textView4" />
+            android:id="@+id/textView_album"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textIsSelectable="false"
+            android:textColor="#fa4343" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,13 +54,16 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView3" />
+            android:id="@+id/imageView3"
+            android:src="@mipmap/ic_editora" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textView5" />
+            android:id="@+id/textView_editora"
+            android:textSize="25dp"
+            android:textIsSelectable="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,13 +74,15 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView4" />
+            android:id="@+id/imageView4"
+            android:src="@mipmap/ic_ano" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textView3" />
+            android:id="@+id/textView_ano"
+            android:textSize="25dp" />
 
     </LinearLayout>
 
@@ -80,12 +94,15 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView5" />
+            android:id="@+id/imageView5"
+            android:src="@mipmap/ic_rating" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:id="@+id/textView2" />
+            android:id="@+id/textView_rating"
+            android:textSize="25dp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

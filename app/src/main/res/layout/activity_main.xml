@@ -8,8 +8,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.imufur.simplecontactsapp2.MainActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="#bbb6ba">
+    android:background="@color/red"
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -35,7 +36,9 @@
             android:id="@+id/button_search"
             android:layout_gravity="right"
             android:onClick="onClick_search"
-            android:text="@string/button_search" />
+            android:text="@string/button_search"
+            android:background="#536ed1"
+            android:textColor="#ffffff" />
 
 
     </LinearLayout>
@@ -48,7 +51,10 @@
         android:onClick="onClick_add"
         android:nestedScrollingEnabled="false"
         android:layout_gravity="left"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:background="#FF536ED1"
+        android:allowUndo="false"
+        android:textColor="#ffffff" />
 
     <ListView
         android:layout_width="wrap_content"
